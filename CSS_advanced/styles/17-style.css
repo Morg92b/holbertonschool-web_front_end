@@ -31,9 +31,9 @@
     --section-title-color: var(--color-black);
     --section-padding: 5rem 0;
     --section-header-padding: 0 0 3rem;
-    --section-body-paddings: 0 0 3rem;
+    --section-body-padding: 0 0 3rem;
     --section-footer-padding: 3rem 0 0;
-    --section-footer-aligns: center;
+    --section-footer-align: center;
     --footer-padding: 5rem 0 1rem;
     }
     
@@ -87,12 +87,12 @@
     }
 
     .section-body {
-        padding: var(--section-body-paddings);
+        padding: var(--section-body-padding);
     }
 
     .section-footer {
         padding: var(--section-footer-padding);
-        text-align: var(--section-footer-aligns);
+        text-align: var(--section-footer-align);
     }
 
     .section-title {
