@@ -3,52 +3,49 @@
 @use "sass:string";
 @use "103-sort_list" as data;
 
-
 $alphabet: a b c d e f g h i j k l m n o p q r s t u v w x y z;
 
-
-@function char-index($char) {
+@function index($char) {
   @return list.index($alphabet, $char);
 }
 
-
-@function str-compare($a, $b) {
+@function compare($a, $b) {
   $len-a: string.length($a);
   $len-b: string.length($b);
-  $min-len: if($len-a < $len-b, $len-a, $len-b);
 
-  @for $i from 1 through $min-len {
-    $char-a: string.slice($a, $i, $i);
-    $char-b: string.slice($b, $i, $i);
+  @for $i from 1 through $len-a {
+    @if $i > $len-b {
+      @return false;
+    }
 
-    $index-a: char-index($char-a);
-    $index-b: char-index($char-b);
+    $ca: string.slice($a, $i, $i);
+    $cb: string.slice($b, $i, $i);
 
-    @if $index-a != $index-b {
-      @return $index-a < $index-b;
+    @if index($ca) != index($cb) {
+      @return index($ca) < index($cb);
     }
   }
 
   @return $len-a < $len-b;
 }
 
-@function sort-list($list) {
-  $sorted: $list;
-  $length: list.length($sorted);
+@function sort($list) {
+  $result: $list;
+  $n: list.length($result);
 
-  @for $i from 1 through $length {
-    @for $j from 1 through ($length - 1) {
-      $current: list.nth($sorted, $j);
-      $next: list.nth($sorted, $j + 1);
+  @for $i from 1 through $n {
+    @for $j from 1 through ($n - 1) {
+      $a: list.nth($result, $j);
+      $b: list.nth($result, $j + 1);
 
-      @if not str-compare($current, $next) {
-        $sorted: list.set-nth($sorted, $j, $next);
-        $sorted: list.set-nth($sorted, $j + 1, $current);
+      @if not compare($a, $b) {
+        $result: list.set-nth($result, $j, $b);
+        $result: list.set-nth($result, $j + 1, $a);
       }
     }
   }
 
-  @return $sorted;
+  @return $result;
 }
 
-@debug sort-list(data.$list_to_sort);
+@debug sort(data.$list_to_sort);
