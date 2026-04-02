@@ -1,0 +1,3 @@
+@use "sass:string";
+
+@debug string.quote("Hello world")
