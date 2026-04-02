@@ -1,0 +1,54 @@
+/*prints the sorted list in the debug output*/
+@use "sass:list";
+@use "sass:string";
+@use "103-sort_list" as data;
+
+
+$alphabet: a b c d e f g h i j k l m n o p q r s t u v w x y z;
+
+
+@function char-index($char) {
+  @return list.index($alphabet, $char);
+}
+
+
+@function str-compare($a, $b) {
+  $len-a: string.length($a);
+  $len-b: string.length($b);
+  $min-len: if($len-a < $len-b, $len-a, $len-b);
+
+  @for $i from 1 through $min-len {
+    $char-a: string.slice($a, $i, $i);
+    $char-b: string.slice($b, $i, $i);
+
+    $index-a: char-index($char-a);
+    $index-b: char-index($char-b);
+
+    @if $index-a != $index-b {
+      @return $index-a < $index-b;
+    }
+  }
+
+  @return $len-a < $len-b;
+}
+
+@function sort-list($list) {
+  $sorted: $list;
+  $length: list.length($sorted);
+
+  @for $i from 1 through $length {
+    @for $j from 1 through ($length - 1) {
+      $current: list.nth($sorted, $j);
+      $next: list.nth($sorted, $j + 1);
+
+      @if not str-compare($current, $next) {
+        $sorted: list.set-nth($sorted, $j, $next);
+        $sorted: list.set-nth($sorted, $j + 1, $current);
+      }
+    }
+  }
+
+  @return $sorted;
+}
+
+@debug sort-list(data.$list_to_sort);
