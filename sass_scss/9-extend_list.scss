@@ -1,0 +1,14 @@
+/* Task 9: Extend .info class to .success and .warning with different text colors */
+.info {
+    font-size: 12px;
+}
+
+.success {
+    @extend .info;
+    color: #00ff00;
+} 
+
+.warning {
+    @extend .info;
+    color: #ff0000;
+}
