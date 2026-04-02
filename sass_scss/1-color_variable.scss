@@ -1,6 +1,9 @@
-/* My style */
-$base-color: #3D3D3D;
+/* Task 1: Assign text color #3D3D3D to body and p */
+$text-color: #3d3d3d;
 body {
-        color: $base-color }
-    P {
-        color: $base-color }
+    color: $text-color;
+}
+
+p {
+    color: $text-color;
+}
