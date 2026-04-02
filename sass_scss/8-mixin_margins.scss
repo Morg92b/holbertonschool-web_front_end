@@ -1,0 +1,13 @@
+/* Task 8: Mixin for setting left and right margins for body and div elements */
+@mixin set_margin($left,$right) {
+    margin-left: $left;
+    margin-right: $right;
+}
+
+body {
+    @include set_margin(10px,10px)
+}
+
+div {
+    @include set_margin(15px,15px)
+}
