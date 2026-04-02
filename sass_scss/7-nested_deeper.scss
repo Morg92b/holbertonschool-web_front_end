@@ -1,0 +1,10 @@
+/* Task 7: Font sizes for body (14px), h1 inside body (16px), and h1.smaller inside body (12px) using nesting */
+body {
+    font-size: 14px;
+    h1 {
+        font-size: 16px;
+    }
+    h1.smaller {
+        font-size: 12px;
+    }
+}
