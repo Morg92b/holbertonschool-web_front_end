@@ -1,0 +1,7 @@
+/* This file generates .col-* classes from 1 to 4 with proportional widths */
+
+@for $i from 1 through 4 {
+  .col-#{$i} {
+    width: 100% / $i;
+  }
+}
