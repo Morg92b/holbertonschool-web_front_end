@@ -1,0 +1,8 @@
+/* Task 6: Button text color #FF0000; on hover color changes to #00FF00 using nesting */
+button {
+  color: #FF0000;
+
+  &:hover {
+    color: #00FF00;
+  }
+}
