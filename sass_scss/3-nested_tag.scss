@@ -1,0 +1,8 @@
+/* Task 3: No margin or padding in body; margin 10px to p inside body using nesting */  
+body {
+    margin: 0px;
+    padding: 0px;
+    p {
+        margin: 10px;
+    }
+}
