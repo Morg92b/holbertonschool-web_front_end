@@ -1,2 +1,9 @@
 /* All names */
-$list-names: julien john sam damian;
+/* Task 11: Create classes for each name in $list-names list and assign background images using @each and @use */
+@use '11-photos' as photos;
+
+@each $name in photos.$list-names {
+    .photo-#{$name} {
+        background: image-url('photos/#{$name}.jpg') no-repeat;
+    }
+}
