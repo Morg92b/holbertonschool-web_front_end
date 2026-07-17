@@ -1,3 +1,5 @@
+const prompt = require("prompt-sync")();
+
 const stock = {
   macbook: 2,
   iphone: 4,
