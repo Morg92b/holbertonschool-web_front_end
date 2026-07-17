@@ -4,7 +4,8 @@ const stock = {
 };
 
 function processPayment(itemName) {
-  stock[itemName] -= 1;
+  const key = itemName.toLowerCase();
+  stock[key] -= 1;
   console.log(`Payment is being processed for item ${itemName}`);
 }
 
@@ -14,14 +15,14 @@ function processError(itemName) {
 }
 
 function processOrder(itemName, callbackPayment, callbackError) {
+  console.log(`Verifying the stock of ${itemName}`);
+
   const key = itemName.toLowerCase();
 
-  console.log(`Verifying the stock of ${key}`);
-
-  if (stock[key] > 0) {
-    callbackPayment(key);
+  if (stock[key] && stock[key] > 0) {
+    callbackPayment(itemName);
   } else {
-    callbackError(key);
+    callbackError(itemName);
   }
 }
 
