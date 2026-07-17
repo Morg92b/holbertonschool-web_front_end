@@ -1,11 +1,12 @@
-let stock = {
+const stock = {
   macbook: 2,
   iphone: 4,
 };
 
 function processPayment(itemName) {
-  console.log(`No more ${itemName} in stock`);
-  console.log("Payment is not being processed");
+  const key = itemName.toLowerCase();
+  stock[key] -= 1;
+  console.log(`Payment is being processed for item ${itemName}`);
 }
 
 function processError(itemName) {
@@ -15,14 +16,17 @@ function processError(itemName) {
 
 function processOrder(itemName, callbackPayment, callbackError) {
   console.log(`Verifying the stock of ${itemName}`);
-  if (itemName > 0) {
+
+  const key = itemName.toLowerCase();
+
+  if (stock[key] && stock[key] > 0) {
     callbackPayment(itemName);
   } else {
     callbackError(itemName);
   }
 }
 
-let item = prompt(
+const itemName = prompt(
   "Please enter the item you would like to purchase (Macbook, iPhone)",
 );
-processOrder(item, processPayment, processError);
+processOrder(itemName, processPayment, processError);
