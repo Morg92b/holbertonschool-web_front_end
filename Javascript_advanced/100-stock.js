@@ -23,14 +23,8 @@ function processOrder(itemName, callbackPayment, callbackError) {
   }
 }
 
-let item = prompt(
-  "Please enter the item you would like to purchase (Macbook, iPhone)",
-);
-
-item = item.toLowerCase();
-
-if (stock.hasOwnProperty(item)) {
-  processOrder(item, processPayment, processError);
-} else {
-  processError(item);
-}
+module.exports = {
+  processPayment,
+  processError,
+  processOrder,
+};
