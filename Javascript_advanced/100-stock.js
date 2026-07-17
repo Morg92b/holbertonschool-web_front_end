@@ -19,7 +19,7 @@ function processOrder(itemName, callbackPayment, callbackError) {
 
   const key = itemName.toLowerCase();
 
-  if (stock[key] && stock[key] > 0) {
+  if (stock[key] > 0) {
     callbackPayment(itemName);
   } else {
     callbackError(itemName);
