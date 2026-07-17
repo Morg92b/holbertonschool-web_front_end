@@ -4,7 +4,8 @@ const stock = {
 };
 
 function processPayment(itemName) {
-  stock[itemName]--;
+  const key = itemName.toLowerCase();
+  stock[key] -= 1;
   console.log(`Payment is being processed for item ${itemName}`);
 }
 
@@ -14,20 +15,18 @@ function processError(itemName) {
 }
 
 function processOrder(itemName, callbackPayment, callbackError) {
-  const item = itemName.toLowerCase();
+  console.log(`Verifying the stock of ${itemName}`);
 
-  console.log(`Verifying the stock of ${item}`);
+  const key = itemName.toLowerCase();
 
-  if (stock[item] > 0) {
-    callbackPayment(item);
+  if (stock[key] && stock[key] > 0) {
+    callbackPayment(itemName);
   } else {
-    callbackError(item);
+    callbackError(itemName);
   }
 }
 
-module.exports = {
-  stock,
-  processPayment,
-  processError,
-  processOrder,
-};
+const itemName = prompt(
+  "Please enter the item you would like to purchase (Macbook, iPhone)",
+);
+processOrder(itemName, processPayment, processError);
