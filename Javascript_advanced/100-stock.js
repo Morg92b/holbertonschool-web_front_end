@@ -14,16 +14,19 @@ function processError(itemName) {
 }
 
 function processOrder(itemName, callbackPayment, callbackError) {
-  console.log(`Verifying the stock of ${itemName}`);
+  const item = itemName.toLowerCase();
 
-  if (stock[itemName] > 0) {
-    callbackPayment(itemName);
+  console.log(`Verifying the stock of ${item}`);
+
+  if (stock[item] > 0) {
+    callbackPayment(item);
   } else {
-    callbackError(itemName);
+    callbackError(item);
   }
 }
 
 module.exports = {
+  stock,
   processPayment,
   processError,
   processOrder,
